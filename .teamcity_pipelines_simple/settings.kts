@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.pipelines.*
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -37,6 +38,7 @@ project {
     }
 
     pipeline(CrudControllerPipeline)
+    pipeline(CrudControllerPipelineSecond)
 }
 
 object HttpsGithubComDariaKrupBookingApiPayconiqRefsHeadsMaster : GitVcsRoot({
@@ -77,4 +79,34 @@ object CrudControllerPipeline : Pipeline({
 object CrudControllerPipeline_Job1 : Job({
     id("Job1")
     name = "Job 1"
+})
+
+
+object CrudControllerPipelineSecond : Pipeline({
+    name = "CRUD Controller: pipeline (2)"
+
+    repositories {
+        repository(DslContext.settingsRoot)
+    }
+
+    triggers {
+        schedule {
+            schedulingPolicy = daily {
+                hour = 15
+                minute = 25
+            }
+            triggerBuild = always()
+        }
+    }
+
+    job {
+        id = "JobCMDId"
+        name = "Job CMD"
+
+        steps {
+            script {
+                scriptContent = "echo 'Success'"
+            }
+        }
+    }
 })

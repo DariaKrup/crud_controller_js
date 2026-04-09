@@ -90,6 +90,7 @@ object CrudControllerPipelineSecond : Pipeline({
     }
 
     triggers {
+        vcs {  }
         schedule {
             schedulingPolicy = daily {
                 hour = 15

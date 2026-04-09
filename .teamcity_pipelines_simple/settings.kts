@@ -1,5 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.pipelines.*
+import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
@@ -60,6 +61,13 @@ object CrudControllerPipeline : Pipeline({
 
     triggers {
         vcs {
+        }
+        schedule {
+            schedulingPolicy = daily {
+                hour = 15
+                minute = 25
+            }
+            triggerBuild = always()
         }
     }
 

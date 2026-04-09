@@ -9,5 +9,9 @@ object Project : Project({
 
     vcsRoot(HttpsGithubComDariaKrupBookingApiPayconiqRefsHeadsMaster)
 
+    params {
+        param("parameter", "parameter")
+    }
+
     pipeline(CrudControllerPipeline)
 })

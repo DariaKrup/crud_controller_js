@@ -107,6 +107,15 @@ object CrudControllerPipelineSecond : Pipeline({
                 minute = 15
             }
         }
+
+        schedule {
+            schedulingPolicy = weekly {
+                dayOfWeek = ScheduleTrigger.DAY.Tuesday
+                hour = 15
+                minute = 15
+                timezone = "Europe/Amsterdam"
+            }
+        }
     }
 
     job {

@@ -33,7 +33,7 @@ project {
     buildType(BuildCrud)
 
     pipeline(CrudControllerPipeline)
-    pipeline(Pipeline)
+    pipeline(Pipeline1)
 }
 
 object BuildCrud : BuildType({
@@ -80,8 +80,8 @@ object CrudControllerPipeline_Job1 : Job({
 })
 
 
-object Pipeline : Pipeline({
-    name = "Pipeline"
+object Pipeline1 : Pipeline({
+    name = "Pipeline1"
 
     repositories {
         repository(DslContext.settingsRoot)
@@ -92,7 +92,7 @@ object Pipeline : Pipeline({
         }
     }
 
-    job(Pipeline_Job1)
+    job(Pipeline1_Job1)
 })
 
 object Pipeline_Job1 : Job({

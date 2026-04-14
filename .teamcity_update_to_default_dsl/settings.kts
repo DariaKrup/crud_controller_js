@@ -79,13 +79,10 @@ object CrudControllerPipeline_Job1 : Job({
     }
 
     requirements {
-            startsWith("system.agent.name", "Default", "RQ_1")
             doesNotContain("system.agent.name", "Windows", "RQ_2")
-            endsWith("system.agent.name", "Agent", "RQ_3")
             doesNotMatch("system.agent.name", "ip", "RQ_ip")
 
             moreThanVer("docker.version", "27.1", "docker")
-            lessThanVer("DotNetCLI", "10", "dotnet")
         }
 })
 

@@ -95,7 +95,7 @@ object Pipeline1 : Pipeline({
     job(Pipeline1_Job1)
 })
 
-object Pipeline_Job1 : Job({
+object Pipeline1_Job1 : Job({
     id("Job1")
     name = "Job 1"
 

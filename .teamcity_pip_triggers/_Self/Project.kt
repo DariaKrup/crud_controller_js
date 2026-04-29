@@ -10,6 +10,7 @@ object Project : Project({
     vcsRoot(HttpsGithubComDariaKrupBookingApiPayconiqRefsHeadsMaster)
     vcsRoot(HttpsBbdatacenterQaTeamcityComScmTestuserMailTestDkrupkinaSimpleMavenProjectRefsHeadsMaster)
 
+    buildType(MavenTestsBuildType)
     pipeline(BookingApiPayconiqPipeline)
     pipeline(CrudControllerPipeline)
     pipeline(SimpleMavenProjectWithoutPRs)

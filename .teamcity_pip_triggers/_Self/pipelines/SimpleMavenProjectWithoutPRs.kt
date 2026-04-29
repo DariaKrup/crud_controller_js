@@ -25,9 +25,27 @@ object SimpleMavenProjectWithoutPRs_Job1 : Job({
     name = "Maven tests"
 
     steps {
+        copySteps(MavenTestsBuildType)
         maven {
             name = "clean test"
             goals = "clean test"
         }
     }
 })
+
+fun PipelineSteps.copySteps(buildType: BuildTypeSettings) {
+    buildType.steps.items.forEach { step ->
+        if (step !is PipelineCompatible) {
+            return@forEach
+        }
+
+        val copy = step.copy()
+        if (copy.id != null) {
+            copy.id = sanitizeIdentifier(copy.id!!)
+        }
+
+        step(copy)
+    }
+}
+
+fun sanitizeIdentifier(identifier: String) = identifier.replace("[^a-zA-Z0-9]".toRegex(), "_")
